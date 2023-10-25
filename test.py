@@ -1,19 +1,40 @@
-import pickle
-#import tensorflow as tf
-#tf.config.list_physical_devices('GPU')
-#file = open('python_how_to_do_it_by_classifier_multiple_iid_to_code.pickle', 'rb')
-text_word_vocab = pickle.load(open('text_word_vocab.pickle', 'rb'))
-code_token_vocab = pickle.load(open('code_token_vocab.pickle', 'rb'))
+import pickle, os, csv, datetime, pandas, html
+from google.cloud import bigquery
+from html.parser import HTMLParser
+from bs4 import BeautifulSoup
+import keras_core as keras
+import tensorflow as tf
+html = open("post_questions_extracted-000000000000.csv", "r", encoding="utf8")
+soup = BeautifulSoup(html, "html.parser")
+print(soup.text)
 
 
-print('Showing the pickled data:')
 
-cnt = 0
-for item in text_word_vocab:
-    print('The data ', cnt, ' is : ', item)
-    cnt += 1
 
-count = 0
-for item in code_token_vocab:
-    print('The data ', count, ' is : ', item)
-    count += 1
+
+
+
+
+
+
+# SERVICE_ACCOUNT_JSON = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/sion/Downloads/meow-401216-dd1762818675.json"
+# client = bigquery.Client.from_service_account_json(SERVICE_ACCOUNT_JSON)
+# bucket_name = 'bongus'
+# project = 'bigquery-public-data'
+# dataset_id = 'stackoverflow'
+# table_id = 'posts_questions'
+
+# destination_uri = "gs://{}/{}".format(bucket_name, "post_questions_extracted-*.csv")
+# dataset_ref = bigquery.DatasetReference(project,dataset_id)
+# table_ref = dataset_ref.table(table_id)
+# extract_job = client.extract_table(
+# 	table_ref,
+# 	destination_uri, 
+# 	location="US"
+# )
+# timestamp = datetime.datetime.now()
+# print("{}: Exported {}:{}.{} to {}".format(timestamp, project, dataset_id,table_id, destination_uri))
+# extract_job.result()
+
+# pickle.load(open('stackdata.csv','r'))
+   
